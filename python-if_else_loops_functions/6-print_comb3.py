@@ -6,4 +6,3 @@ for i in range(9):
             print("{num:02}".format(num=((i * 10) + j)), end="\n")
         else:
             print("{num:02}".format(num=((i * 10) + j)), end=", ")
-
