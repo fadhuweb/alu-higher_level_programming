@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/bash
 # Check if $PYCODE variable is set
 if [ -z "$PYCODE" ]; then
     echo "Error: Environment variable PYCODE is not set."
