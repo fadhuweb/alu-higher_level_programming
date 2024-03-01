@@ -1,19 +1,17 @@
 #!/usr/bin/python3
-def safe_print_division(a, b):
-    try:
-        result = a / b
-    except ZeroDivisionError:
-        print("Inside result: {}".format(None))
-        return None
-    except Exception as e:
-        print("An error occurred:", e)
-        return None
-    else:
-        print("Inside result: {}".format(result))
-        return result
-    finally:
-        print("Inside finally: {}".format(result))
+#task 3
 
-# Example usage:
-# safe_print_division(10, 2)
+
+#!/usr/bin/python3
+
+
+def safe_print_division(a, b):
+    """Returns the division of a by b."""
+    try:
+        div = a / b
+    except (TypeError, ZeroDivisionError):
+        div = None
+    finally:
+        print("Inside result: {}".format(div))
+    return (div)
 
