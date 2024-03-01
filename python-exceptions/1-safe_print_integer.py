@@ -1,9 +1,19 @@
 #!/usr/bin/python3
-# 1-element_at.py
+#!/usr/bin/python3
 
 
-def element_at(my_list, idx):
-    """Retrive an element from a list."""
-    if idx < 0 or idx > (len(my_list) - 1):
-        return None
-    return (my_list[idx])
+def safe_print_integer(value):
+    """Print an integer with "{:d}".format().
+
+    Args:
+        value (int): The integer to print.
+
+    Returns:
+        If a TypeError or ValueError occurs - False.
+        Otherwise - True.
+    """
+    try:
+        print("{:d}".format(value))
+        return (True)
+    except (TypeError, ValueError):
+        return (False)
