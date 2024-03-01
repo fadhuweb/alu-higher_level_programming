@@ -1,10 +1,19 @@
 #!/usr/bin/python3
-# 3-print_reversed_list_integer.py
+def safe_print_division(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Inside result: {}".format(None))
+        return None
+    except Exception as e:
+        print("An error occurred:", e)
+        return None
+    else:
+        print("Inside result: {}".format(result))
+        return result
+    finally:
+        print("Inside finally: {}".format(result))
 
+# Example usage:
+# safe_print_division(10, 2)
 
-def print_reversed_list_integer(my_list=[]):
-    """Print all integers of a list in reverse order."""
-    if isinstance(my_list, list):
-        my_list.reverse()
-        for i in my_list:
-            print("{:d}".format(i))
