@@ -1,24 +1,30 @@
 #!/usr/bin/node
-const request = require('request');
+
+const axios = require('axios');
 
 if (process.argv.length !== 3) {
-  console.error('Usage: node 3-starwars_title.js <movie-ID>');
-  process.exit(1);
+    console.log("Usage: ./script.js <movie_id>");
+    process.exit(1);
 }
 
-const movieID = process.argv[2];
+const movieId = process.argv[2];
 
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieID}`;
+if (isNaN(movieId)) {
+    console.log("Please provide a valid integer as the movie ID.");
+    process.exit(1);
+}
 
-request.get(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error(error);
-  } else {
-    if (response.statusCode === 200) {
-      const movieData = JSON.parse(body);
-      console.log(movieData.title);
-    } else {
-      console.error(`Failed to fetch movie data. Status code: ${response.statusCode}`);
-    }
-  }
-});
+const url = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+
+axios.get(url)
+    .then(response => {
+        console.log(response.data.title);
+    })
+    .catch(error => {
+        if (error.response && error.response.status === 404) {
+            console.log("Invalid movie ID or no title found for the given ID.");
+        } else {
+            console.log(`An error occurred: ${error.message}`);
+        }
+    });
+
